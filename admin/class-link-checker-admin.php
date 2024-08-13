@@ -69,7 +69,9 @@ class Link_Checker_Admin {
 					array(
 						'methods'             => 'GET',
 						'callback'            => array( $this, 'api_check' ),
-						'permission_callback' => '__return_true',
+						'permission_callback' => function ( WP_REST_Request $request ) {
+							return current_user_can( 'manage_options' );
+						},
 					)
 				);
 			}
@@ -84,7 +86,9 @@ class Link_Checker_Admin {
 					array(
 						'methods'             => 'GET',
 						'callback'            => array( $this, 'api_fetch' ),
-						'permission_callback' => '__return_true',
+						'permission_callback' => function ( WP_REST_Request $request ) {
+							return current_user_can( 'manage_options' );
+						},
 					)
 				);
 			}
@@ -212,6 +216,11 @@ class Link_Checker_Admin {
 
 		$v = filemtime( plugin_dir_path( __FILE__ ) . 'js/link-checker-admin.js' );
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/link-checker-admin.js', array( 'jquery' ), $v, false );
+		wp_add_inline_script(
+			$this->plugin_name,
+			'const wpRestNonce = ' . wp_json_encode( wp_create_nonce( 'wp_rest' ) ),
+			'before'
+		);
 
 	}
 
