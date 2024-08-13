@@ -67,8 +67,9 @@ class Link_Checker_Admin {
 					'linkchecker/v1',
 					'/check',
 					array(
-						'methods'  => 'GET',
-						'callback' => array( $this, 'api_check' ),
+						'methods'             => 'GET',
+						'callback'            => array( $this, 'api_check' ),
+						'permission_callback' => '__return_true',
 					)
 				);
 			}
@@ -81,8 +82,9 @@ class Link_Checker_Admin {
 					'linkchecker/v1',
 					'/fetch',
 					array(
-						'methods'  => 'GET',
-						'callback' => array( $this, 'api_fetch' ),
+						'methods'             => 'GET',
+						'callback'            => array( $this, 'api_fetch' ),
+						'permission_callback' => '__return_true',
 					)
 				);
 			}
