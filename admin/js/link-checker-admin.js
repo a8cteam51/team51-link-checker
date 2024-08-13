@@ -1,3 +1,4 @@
+/* global wpRestNonce */
 ( function ( $ ) {
     'use strict';
 
@@ -107,7 +108,13 @@
         // Events. TODO: Move this to VueJS event
         $( document ).on( 'click', '.link-checker__btn-start', function () {
             $( '.link-checker__btn-start' ).attr( 'disabled', 1 );
-            $.ajax( '/wp-json/linkchecker/v1/check' ).done( () => {
+            $.ajax( { 
+                url: '/wp-json/linkchecker/v1/check',
+                method: 'GET',
+                headers: {
+                    'X-WP-Nonce': wpRestNonce,
+                }
+            } ).done( () => {
                 $( '.link-checker__btn-start' ).removeAttr( 'disabled' );
                 // TODO: re-render Vue template
                 // pullLastData();
