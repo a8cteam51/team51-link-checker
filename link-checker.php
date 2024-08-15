@@ -16,7 +16,7 @@
  * Plugin Name:       Link Checker
  * Plugin URI:        https://github.com/a8cteam51/wordpress-importer-fixers/tree/cli/link-checker
  * Description:       Identify issues with links (400, 404, etc.) and surface linked domains like staging or development.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Automattic
  * Author URI:        https://automattic.com
  * License:           GPL-2.0+
@@ -38,7 +38,7 @@ require_once dirname( __FILE__ ) . '/includes/class-link-checker.php';
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'LINK_CHECKER_VERSION', '1.0.0' );
+define( 'LINK_CHECKER_VERSION', '1.0.1' );
 define( 'LINK_CHECKER_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
 /**
